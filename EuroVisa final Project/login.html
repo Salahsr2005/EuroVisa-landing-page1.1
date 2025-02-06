@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services d'Études à l'Étranger</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(14, 165, 233, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(14, 165, 233, 0.8); }
+        }
+        .glowing-text {
+            animation: glow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col justify-center items-center p-4">
+      <!-- Header -->
+  <header class="header">
+    <div class="logo"><a href="#"><img src="Logo-removebg-preview.png" alt="Logo"></a></div>
+    <nav class="nav-links">
+        <a href="Overview.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="dest.html">Destinations</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Services</a>
+    </nav>
+    <div class="mobile-menu">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <button class="btn-connexion">Connexion/S'inscrire</button>
+  </header>
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+    });
+
+    // Budget Range Slider
+    const rangeInput = document.querySelector('input[type="range"]');
+    const budgetValue = document.getElementById('budget-value');
+
+    rangeInput.addEventListener('input', (e) => {
+        budgetValue.textContent = `${e.target.value} DA`;
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+    });
+  </script>
+    <h1 class="text-4xl font-bold text-center text-blue-500 mb-12 uppercase tracking-wider glowing-text">
+        Services d'Études Internationales
+    </h1>
+    
+    <div class="flex flex-wrap justify-center gap-8">
+        <!-- France Card -->
+        <div class="bg-white shadow-lg rounded-xl p-6 w-80 transform transition-transform hover:-translate-y-2">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">Campus France</h2>
+            <div class="text-3xl font-extrabold text-gray-900 mb-2">25 000 DZD</div>
+            <p class="text-gray-600 mb-6">Support Complet pour Candidature Universitaire Française</p>
+            
+            <ul class="space-y-4 mb-6">
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Sélection d'Université</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Lettre de Motivation</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Guidance de Candidature</span>
+                </li>
+            </ul>
+            
+            <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                Sélectionner le Forfait France
+            </button>
+        </div>
+
+        <!-- Belgium Card -->
+        <div class="bg-white shadow-lg rounded-xl p-6 w-80 transform transition-transform hover:-translate-y-2">
+            <h2 class="text-2xl font-bold text-green-600 mb-4">Belgique</h2>
+            <div class="text-3xl font-extrabold text-gray-900 mb-2">250 000 DZD</div>
+            <p class="text-gray-600 mb-6">Forfait Complet de Candidature Universitaire Belge</p>
+            
+            <ul class="space-y-4 mb-6">
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Assistance Équivalence</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Support de Candidature</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Consultation Visa</span>
+                </li>
+            </ul>
+            
+            <button class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors">
+                Sélectionner le Forfait Belgique
+            </button>
+        </div>
+
+        <!-- Poland Card -->
+        <div class="bg-white shadow-lg rounded-xl p-6 w-80 transform transition-transform hover:-translate-y-2">
+            <h2 class="text-2xl font-bold text-red-600 mb-4">Pologne</h2>
+            <div class="text-3xl font-extrabold text-gray-900 mb-2">50 000 DZD</div>
+            <p class="text-gray-600 mb-6">Service Complet de Candidature Universitaire Polonaise</p>
+            
+            <ul class="space-y-4 mb-6">
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Traitement Équivalence</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Assistance Candidature</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Support Linguistique</span>
+                </li>
+            </ul>
+            
+            <button class="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors">
+                Sélectionner le Forfait Pologne
+            </button>
+        </div>
+
+        <!-- Universités Non Connectées Card -->
+        <div class="bg-white shadow-lg rounded-xl p-6 w-80 transform transition-transform hover:-translate-y-2">
+            <h2 class="text-2xl font-bold text-purple-600 mb-4">Universités Non Connectées</h2>
+            <div class="text-3xl font-extrabold text-gray-900 mb-2">25 000 DZD</div>
+            <p class="text-gray-600 mb-6">Support pour Universités Sélectionnées</p>
+            
+            <ul class="space-y-4 mb-6">
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-purple-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Paris-Saclay</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-purple-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Université Paris 1</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-purple-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Candidature Personnalisée</span>
+                </li>
+            </ul>
+            
+            <button class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                Sélectionner Universités Non Connectées
+            </button>
+        </div>
+
+        <!-- Parcoursup Card -->
+        <div class="bg-white shadow-lg rounded-xl p-6 w-80 transform transition-transform hover:-translate-y-2">
+            <h2 class="text-2xl font-bold text-indigo-600 mb-4">Parcoursup</h2>
+            <div class="text-3xl font-extrabold text-gray-900 mb-2">25 000 DZD</div>
+            <p class="text-gray-600 mb-6">Support Complet Parcoursup</p>
+            
+            <ul class="space-y-4 mb-6">
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Préparation du Dossier</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Suivi de Candidature</span>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-6 h-6 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Conseil Personnalisé</span>
+                </li>
+            </ul>
+            
+            <button class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors">
+                Sélectionner Parcoursup
+            </button>
+        </div>
+    </div>
+</body>
+</html>

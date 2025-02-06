@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>À propos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const navLinks = document.querySelectorAll("nav a");
+    
+          navLinks.forEach(link => {
+            link.addEventListener("click", (event) => {
+              event.preventDefault(); // Stop default behavior of anchor links
+              const targetHref = link.getAttribute("href"); // Get target URL
+              
+              // Save target URL to session storage
+              sessionStorage.setItem("redirectTarget", targetHref);
+    
+              // Navigate to the loading page
+              window.location.href = "load.html";
+            });
+          });
+        });
+      </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+        <img src="Logo-removebg-preview.png" alt="Logo">
+    </div>
+    <nav class="nav-links">
+        <a href="Overview.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="dest.html">Destinations</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="mobile-menu">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <button class="btn-connexion">Connexion/S'inscrire</button>
+  </header>
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+    });
+
+    // Budget Range Slider
+    const rangeInput = document.querySelector('input[type="range"]');
+    const budgetValue = document.getElementById('budget-value');
+
+    rangeInput.addEventListener('input', (e) => {
+        budgetValue.textContent = `${e.target.value} DA`;
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+    });
+  </script>  
+      <div class="stack-area">
+        <div class="left">
+          <div class="title">À propos de nous</div>
+          <div class="sub-title">
+            Transform your workflow with our cutting-edge features. Experience seamless integration, 
+            enhanced productivity, and revolutionary learning capabilities all in one place.
+            <br />
+            <button>Explore Features</button>
+          </div>
+        </div>
+        <div class="right">
+          <div class="card">
+            <div class="sub">Succès des Étudiants</div>
+            <div class="content">Plus de 100 étudiants ont réalisé leurs rêves d'études à l'international</div>
+          </div>
+          <div class="card">
+            <div class="sub">Garantie de Service</div>
+            <div class="content">Notre engagement envers l'excellence se traduit par une garantie complète à chaque étape</div>
+          </div>
+          <div class="card">
+            <div class="sub">Confiance & Expertise</div>
+            <div class="content">Notre équipe d'experts cumule plus de 20 ans d'expérience </div>
+          </div>
+          <div class="card">
+            <div class="sub">Support</div>
+            <div class="content">Now it's 24/7 support</div>
+          </div>
+        </div>
+      </div>
+  
+      <script>
+        let cards = document.querySelectorAll(".card");
+        let stackArea = document.querySelector(".stack-area");
+  
+        function rotateCards() {
+          let angle = 0;
+          cards.forEach((card, index) => {
+            if (card.classList.contains("away")) {
+              if (window.innerWidth <= 768) {
+                card.style.transform = `translate(-50%, -120vh) rotate(-48deg)`;
+              } else {
+                card.style.transform = `translateY(-120vh) rotate(-48deg)`;
+              }
+            } else {
+              if (window.innerWidth <= 768) {
+                card.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+              } else {
+                card.style.transform = `rotate(${angle}deg)`;
+              }
+              angle = angle - 10;
+              card.style.zIndex = cards.length - index;
+            }
+          });
+        }
+  
+        rotateCards();
+  
+        window.addEventListener("scroll", () => {
+          let distance = window.innerHeight * 0.5;
+          let topVal = stackArea.getBoundingClientRect().top;
+          let index = -1 * (topVal / distance + 1);
+          index = Math.floor(index);
+  
+          cards.forEach((card, i) => {
+            if (i <= index) {
+              card.classList.add("away");
+            } else {
+              card.classList.remove("away");
+            }
+          });
+          
+          rotateCards();
+        });
+  
+        // Handle window resize
+        window.addEventListener("resize", rotateCards);
+      </script>
+</body>
+</html>

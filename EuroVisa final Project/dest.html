@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0b1425;
+            --secondary-color: #3b82f6;
+            --text-color: #ffffff;
+            --background-color: rgba(11, 20, 37, 0.9);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color), #1a2841);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--background-color);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo img {
+            height: 50px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu div {
+            width: 25px;
+            height: 3px;
+            background: var(--text-color);
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        /* Container Styles */
+        .container {
+            display: flex;
+            margin-top: 80px;
+            padding: 0 5%;
+        }
+
+        .filters {
+            width: 300px;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            margin-right: 20px;
+        }
+
+        .content {
+            flex-grow: 1;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        /* Filter Styles */
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filter-title {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .checkbox-container input {
+            margin-right: 10px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--background-color);
+                padding: 20px;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .filters {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+        .btn-connexion {
+        padding: 12px 30px;
+        margin-left: 30px;
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+        }
+
+        .btn-connexion:hover {
+        background: var(--hover-color);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(30, 144, 255, 0.4);
+        }
+        /* Loading Placeholder Styles */
+        .loading-placeholder {
+            background: rgba(59, 130, 246, 0.1);
+            height: 50px;
+            margin: 10px 0;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="Logo.jpeg" alt="Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="Overview.html">Accueil</a>
+            <a href="about.html">À propos</a>
+            <a href="dest.html">Destinations</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="mobile-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <button class="btn-connexion">Connexion/S'inscrire</button>
+    </header>
+
+    <div class="container">
+        <div class="filters">
+            <div class="filter-section">
+                <h3 class="filter-title">Pays</h3>
+                <div class="checkbox-container">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>France</span>
+                </div>
+                <div class="checkbox-container">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Belgique</span>
+                </div>
+                <div class="checkbox-container">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Pologne</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Test de Langue</h3>
+                <div class="checkbox-container">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Français</span>
+                </div>
+                <div class="checkbox-container">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Anglais</span>
+                </div>
+                <div class="checkbox-container">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Préfère entretien</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Équivalence</h3>
+                <div class="checkbox-container">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Oui</span>
+                </div>
+                <div class="checkbox-container">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Non</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Budget</h3>
+                <div class="slider-container">
+                    <div class="slider-header">
+                        <span>0</span>
+                        <span class="slider-value">50000 DA</span>
+                    </div>
+                    <input type="range" min="0" max="100000" step="10000" value="50000">
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="loading-placeholder"></div>
+            <div class="loading-placeholder"></div>
+            <div class="loading-placeholder"></div>
+            <div class="loading-placeholder"></div>
+            <div class="loading-placeholder"></div>
+            <div class="loading-placeholder"></div>
+            <div class="loading-placeholder"></div>
+            <div class="loading-placeholder"></div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Budget Range Slider
+        const rangeInput = document.querySelector('input[type="range"]');
+        const budgetValue = document.getElementById('budget-value');
+
+        rangeInput.addEventListener('input', (e) => {
+            budgetValue.textContent = `${e.target.value} DA`;
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
